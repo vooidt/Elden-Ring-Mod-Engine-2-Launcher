@@ -10,7 +10,7 @@ Requirement:
 - .NET Framework 4.7.2
 
 Installation:
-- install through the release -> https://github.com/vooidt/Elden-Ring-Mod-Engine-2-Launcher/releases
+- download ERModLauncher.zip from the [release](https://github.com/vooidt/Elden-Ring-Mod-Launcher/releases/tag/v1.0)
 - unzip it somewhere
 - (optional) create shortcut of the EldenRingModLauncher.exe file and place it on desktop
 - done!
