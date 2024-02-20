@@ -7,7 +7,7 @@ You will be able to add any mod folder you want to. It just have to have modengi
 Only expectations is if you move the mod folder to somewhere else or renamed it, you will have to delete and re add the folder. Otherwise it will don't work.
 
 Installation:
-- install through the release
+- install through the release -> https://github.com/vooidt/Elden-Ring-Mod-Engine-2-Launcher/releases
 - unzip it somewhere
 - (optional) create shortcut of the EldenRingModLauncher.exe file and place it on desktop
 - done!
