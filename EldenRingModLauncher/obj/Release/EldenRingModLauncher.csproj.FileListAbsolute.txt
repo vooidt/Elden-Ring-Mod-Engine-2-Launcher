@@ -1,0 +1,16 @@
+C:\cSharp_Projects\EldenRingModLauncher\EldenRingModLauncher\bin\Release\EldenRingModLauncher.exe.config
+C:\cSharp_Projects\EldenRingModLauncher\EldenRingModLauncher\bin\Release\EldenRingModLauncher.exe
+C:\cSharp_Projects\EldenRingModLauncher\EldenRingModLauncher\bin\Release\EldenRingModLauncher.pdb
+C:\cSharp_Projects\EldenRingModLauncher\EldenRingModLauncher\bin\Release\Microsoft.WindowsAPICodePack.dll
+C:\cSharp_Projects\EldenRingModLauncher\EldenRingModLauncher\bin\Release\Microsoft.WindowsAPICodePack.Shell.dll
+C:\cSharp_Projects\EldenRingModLauncher\EldenRingModLauncher\bin\Release\Microsoft.WindowsAPICodePack.xml
+C:\cSharp_Projects\EldenRingModLauncher\EldenRingModLauncher\bin\Release\Microsoft.WindowsAPICodePack.Shell.xml
+C:\cSharp_Projects\EldenRingModLauncher\EldenRingModLauncher\obj\Release\EldenRingModLauncher.csproj.AssemblyReference.cache
+C:\cSharp_Projects\EldenRingModLauncher\EldenRingModLauncher\obj\Release\EldenRingModLauncher.ModLauncher.resources
+C:\cSharp_Projects\EldenRingModLauncher\EldenRingModLauncher\obj\Release\EldenRingModLauncher.ModLauncherInfo.resources
+C:\cSharp_Projects\EldenRingModLauncher\EldenRingModLauncher\obj\Release\EldenRingModLauncher.Properties.Resources.resources
+C:\cSharp_Projects\EldenRingModLauncher\EldenRingModLauncher\obj\Release\EldenRingModLauncher.csproj.GenerateResource.cache
+C:\cSharp_Projects\EldenRingModLauncher\EldenRingModLauncher\obj\Release\EldenRingModLauncher.csproj.CoreCompileInputs.cache
+C:\cSharp_Projects\EldenRingModLauncher\EldenRingModLauncher\obj\Release\EldenRin.0FD1D318.Up2Date
+C:\cSharp_Projects\EldenRingModLauncher\EldenRingModLauncher\obj\Release\EldenRingModLauncher.exe
+C:\cSharp_Projects\EldenRingModLauncher\EldenRingModLauncher\obj\Release\EldenRingModLauncher.pdb
