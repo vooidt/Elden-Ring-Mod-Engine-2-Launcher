@@ -6,6 +6,9 @@ You will be able to add any mod folder you want to. It just have to have modengi
 
 Only expectations is if you move the mod folder to somewhere else or renamed it, you will have to delete and re add the folder. Otherwise it will don't work.
 
+Requirement:
+- .NET Framework 4.7.2
+
 Installation:
 - install through the release -> https://github.com/vooidt/Elden-Ring-Mod-Engine-2-Launcher/releases
 - unzip it somewhere
