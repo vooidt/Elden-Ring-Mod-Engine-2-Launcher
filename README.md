@@ -8,8 +8,8 @@ Only expectations is if you move the mod folder to somewhere else or renamed it,
 
 Installation:
 - install through the release
-- place the installed folder anywhere
-- (optional) create shortcut of exe file and place on desktop
+- unzip it somewhere
+- (optional) create shortcut of the EldenRingModLauncher.exe file and place it on desktop
 - done!
 
 have fun playing modded elden ring!
