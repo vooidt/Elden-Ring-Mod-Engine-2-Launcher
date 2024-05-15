@@ -58,8 +58,14 @@ namespace EldenRingModLauncher
                         modList.Add(mod);
                     }
                 }
+
             }
-            catch (FileNotFoundException) { }
+            catch (FileNotFoundException)
+            {
+                using (StreamWriter sw = new StreamWriter("mod_list.csv"))
+                {
+                }
+            }
 
             InitializeMods();
         }
@@ -214,7 +220,7 @@ namespace EldenRingModLauncher
             {
                 foreach (Mod mod in modList)
                 {
-                    sw.WriteLine(mod.name + "," + mod.bat_file);
+                    sw.WriteLine(mod.type + "," + mod.name + "," + mod.bat_file);
                 }
             }
         }
@@ -227,11 +233,12 @@ namespace EldenRingModLauncher
 
         private void LaunchCOOPButton_Click(object sender, EventArgs e)
         {
-            Mod? hasCoopMod = modList.FirstOrDefault(mod => mod.type == "coop");
+            bool hasCoopMod = modList.Any(mod => mod.type == "coop");
 
-            if (hasCoopMod != null)
+            if (hasCoopMod)
             {
-                Mod coopMod = hasCoopMod.Value;
+                Mod coopMod = modList.Find(mod => mod.type == "coop");
+                Console.WriteLine("THE SEAMLESS COOP VALUE: " + coopMod);
 
                 try
                 {
@@ -259,7 +266,7 @@ namespace EldenRingModLauncher
                         folderPath = Path.Combine(folderPath, "Game");
                         folderName = "Game";
                     }
-                    else if (folderName == "Game")
+                    if (folderName == "Game")
                     {
                         if (!modList.Any(mod => mod.type == "coop"))
                         {
