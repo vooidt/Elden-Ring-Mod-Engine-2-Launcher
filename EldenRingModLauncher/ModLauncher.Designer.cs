@@ -33,6 +33,7 @@
             this.AddButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.InfoButton = new System.Windows.Forms.Button();
+            this.LaunchCOOPButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ModsPanel
@@ -49,11 +50,11 @@
             // LaunchButton
             // 
             this.LaunchButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.LaunchButton.Font = new System.Drawing.Font("Comic Sans MS", 21.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LaunchButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LaunchButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.LaunchButton.Location = new System.Drawing.Point(653, 74);
+            this.LaunchButton.Location = new System.Drawing.Point(653, 114);
             this.LaunchButton.Name = "LaunchButton";
-            this.LaunchButton.Size = new System.Drawing.Size(168, 107);
+            this.LaunchButton.Size = new System.Drawing.Size(168, 46);
             this.LaunchButton.TabIndex = 1;
             this.LaunchButton.Text = "Launch Mod";
             this.LaunchButton.UseVisualStyleBackColor = false;
@@ -64,11 +65,11 @@
             this.AddButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.AddButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.AddButton.Location = new System.Drawing.Point(653, 226);
+            this.AddButton.Location = new System.Drawing.Point(653, 343);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(168, 80);
+            this.AddButton.Size = new System.Drawing.Size(168, 44);
             this.AddButton.TabIndex = 2;
-            this.AddButton.Text = "Add a mod to the launcher";
+            this.AddButton.Text = "Add a mod";
             this.AddButton.UseVisualStyleBackColor = false;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
@@ -77,11 +78,11 @@
             this.DeleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.DeleteButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.DeleteButton.Location = new System.Drawing.Point(653, 379);
+            this.DeleteButton.Location = new System.Drawing.Point(653, 393);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(168, 80);
             this.DeleteButton.TabIndex = 3;
-            this.DeleteButton.Text = "Remove a mod from launcher";
+            this.DeleteButton.Text = "Remove selected mod";
             this.DeleteButton.UseVisualStyleBackColor = false;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
@@ -90,7 +91,7 @@
             this.InfoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.InfoButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InfoButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.InfoButton.Location = new System.Drawing.Point(653, 24);
+            this.InfoButton.Location = new System.Drawing.Point(653, 13);
             this.InfoButton.Name = "InfoButton";
             this.InfoButton.Size = new System.Drawing.Size(168, 44);
             this.InfoButton.TabIndex = 4;
@@ -98,12 +99,26 @@
             this.InfoButton.UseVisualStyleBackColor = false;
             this.InfoButton.Click += new System.EventHandler(this.InfoButton_Click);
             // 
+            // LaunchCOOPButton
+            // 
+            this.LaunchCOOPButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.LaunchCOOPButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LaunchCOOPButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.LaunchCOOPButton.Location = new System.Drawing.Point(653, 175);
+            this.LaunchCOOPButton.Name = "LaunchCOOPButton";
+            this.LaunchCOOPButton.Size = new System.Drawing.Size(168, 66);
+            this.LaunchCOOPButton.TabIndex = 5;
+            this.LaunchCOOPButton.Text = "Launch Seamless Coop";
+            this.LaunchCOOPButton.UseVisualStyleBackColor = false;
+            this.LaunchCOOPButton.Click += new System.EventHandler(this.LaunchCOOPButton_Click);
+            // 
             // ModLauncher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(848, 488);
+            this.Controls.Add(this.LaunchCOOPButton);
             this.Controls.Add(this.InfoButton);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.AddButton);
@@ -125,6 +140,7 @@
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button InfoButton;
+        private System.Windows.Forms.Button LaunchCOOPButton;
     }
 }
 

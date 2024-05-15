@@ -18,6 +18,7 @@ namespace EldenRingModLauncher
     {
         public struct Mod
         {
+            public string type;
             public string name;
             public string bat_file;
         }
@@ -49,8 +50,9 @@ namespace EldenRingModLauncher
 
                         Mod mod = new Mod
                         {
-                            name = values[0],
-                            bat_file = values[1],
+                            type = values[0],
+                            name = values[1],
+                            bat_file = values[2],
                         };
 
                         modList.Add(mod);
@@ -74,9 +76,9 @@ namespace EldenRingModLauncher
                     Process.Start(psi);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("The selected mod does not exist");
+                MessageBox.Show("The selected mod does not exist: " + ex.Message);
             }
         }
 
@@ -94,6 +96,7 @@ namespace EldenRingModLauncher
                 {
                     Mod mod = new Mod
                     {
+                        type = "mod",
                         name = folderName,
                         bat_file = Path.Combine(folderPath, "launchmod_eldenring.bat"),
                     };
@@ -153,21 +156,24 @@ namespace EldenRingModLauncher
 
             foreach (Mod mod in modList)
             {
-                row = i / 3; // Calculate the row index
-                col = i % 3; // Calculate the column index
+                if (mod.type == "mod")
+                {
+                    row = i / 3; // Calculate the row index
+                    col = i % 3; // Calculate the column index
 
-                Button button = new Button();
-                button.Text = mod.name;
-                button.Font = new Font("Comic Sans MS", 15, FontStyle.Bold);
-                button.Size = new Size(button_width, button_height);
-                button.Location = new System.Drawing.Point(start_x + col * (button_width + x_spacing), start_y + row * (button_height + y_spacing));
-                button.ForeColor = Color.White;
-                button.BackColor = Color.FromArgb(40, 40, 40);
-                button.Click += SelectMod;
+                    Button button = new Button();
+                    button.Text = mod.name;
+                    button.Font = new Font("Comic Sans MS", 15, FontStyle.Bold);
+                    button.Size = new Size(button_width, button_height);
+                    button.Location = new System.Drawing.Point(start_x + col * (button_width + x_spacing), start_y + row * (button_height + y_spacing));
+                    button.ForeColor = Color.White;
+                    button.BackColor = Color.FromArgb(40, 40, 40);
+                    button.Click += SelectMod;
 
-                i++;
+                    i++;
 
-                ModsPanel.Controls.Add(button);
+                    ModsPanel.Controls.Add(button);
+                }
             }
         }
 
@@ -217,6 +223,67 @@ namespace EldenRingModLauncher
         {
             ModLauncherInfo modLauncherInfo = new ModLauncherInfo();
             modLauncherInfo.Show();
+        }
+
+        private void LaunchCOOPButton_Click(object sender, EventArgs e)
+        {
+            Mod? hasCoopMod = modList.FirstOrDefault(mod => mod.type == "coop");
+
+            if (hasCoopMod != null)
+            {
+                Mod coopMod = hasCoopMod.Value;
+
+                try
+                {
+                    ProcessStartInfo psi = new ProcessStartInfo(coopMod.bat_file);
+                    psi.WorkingDirectory = Path.GetDirectoryName(coopMod.bat_file);
+                    Process.Start(psi);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("The Seamless coop does not exist: " + ex.Message);
+                }
+            }
+            else
+            {
+                CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+                dialog.Title = "Select the Elden Ring folder - MUST HAVE SEAMLESS COOP";
+                dialog.InitialDirectory = "C:\\";
+                dialog.IsFolderPicker = true;
+                if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+                {
+                    string folderPath = dialog.FileName;
+                    string folderName = new DirectoryInfo(folderPath).Name;
+                    if (folderName == "ELDEN RING")
+                    {
+                        folderPath = Path.Combine(folderPath, "Game");
+                        folderName = "Game";
+                    }
+                    else if (folderName == "Game")
+                    {
+                        if (!modList.Any(mod => mod.type == "coop"))
+                        {
+                            Mod mod = new Mod
+                            {
+                                type = "coop",
+                                name = folderName,
+                                bat_file = Path.Combine(folderPath, "launch_elden_ring_seamlesscoop.exe"),
+                            };
+                            modList.Add(mod);
+                            ModifyModCSV();
+                            InitializeMods();
+                        }
+                        else
+                        {
+                            MessageBox.Show("You already have mod with the same mod, rename or find other");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("You need to select ELDEN RING folder that has Seamless coop executable");
+                    }
+                }
+            }
         }
     }
 }
