@@ -274,7 +274,7 @@ namespace EldenRingModLauncher
                             {
                                 type = "coop",
                                 name = folderName,
-                                bat_file = Path.Combine(folderPath, "launch_elden_ring_seamlesscoop.exe"),
+                                bat_file = Path.Combine(folderPath, "ersc_launcher.exe"),
                             };
                             modList.Add(mod);
                             ModifyModCSV();
