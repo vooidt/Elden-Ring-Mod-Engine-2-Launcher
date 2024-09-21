@@ -121,10 +121,12 @@
     <value>Information about this mod launcher
 _______________________________________
 
-This is a tool that let you add any of mod for Elden Ring. It's only working for ModEngine2 as it uses launchmod_eldenring.bat from the mod folder to launch the selected mod.
+This is a tool that let you add any of mod for Elden Ring. It's only working for ModEngine2 as it uses launchmod_eldenring.bat from the mod folder to launch the selected mod. It also allows Seamless coop executable to be added. 
 
-If you rename the mod folder, make sure to delete the one in this mod launcher as it simply wont work. If you moved the mod folder to somewhere else, do the same thing. Delete and add new one.
+If you rename the mod folder directory name, make sure to delete the one in this mod launcher as it will looks for older folder directory path. If you moved the mod folder to somewhere else, do the same thing. Delete and add new one.
 
-Have fun playing modded Elden Ring!</value>
+Have fun playing modded Elden Ring!
+
+- vooidt</value>
   </data>
 </root>
