@@ -37,7 +37,7 @@ namespace EldenRingModLauncher
 
             try
             {
-
+                // reads the csv file
                 using (var reader = new StreamReader("mod_list.csv"))
                 {
                     string line;
@@ -62,6 +62,7 @@ namespace EldenRingModLauncher
             }
             catch (FileNotFoundException)
             {
+                // the csv file does not exist; makes a csv file
                 using (StreamWriter sw = new StreamWriter("mod_list.csv"))
                 {
                 }
@@ -75,6 +76,7 @@ namespace EldenRingModLauncher
             try
             {
                 if (selected == false) { /* skip */ }
+                // try to launch the selected mod
                 else
                 {
                     ProcessStartInfo psi = new ProcessStartInfo(selected_bat_path);
@@ -90,15 +92,19 @@ namespace EldenRingModLauncher
 
         private void AddButton_Click(object sender, EventArgs e)
         {
+            // opens up a file dialog
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            // setup
             dialog.Title = "Select the mod folder";
             dialog.InitialDirectory = "C:\\";
             dialog.IsFolderPicker = true;
+
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 string folderPath = dialog.FileName;
                 string folderName = new DirectoryInfo(folderPath).Name;
-                if (!modList.Any(mod => mod.name == folderName))
+                // checks if the launchmod_eldenring.bat file exists
+                if (!modList.Any(mod => mod.name == folderName) && File.Exists(Path.Combine(folderPath, "launchmod_eldenring.bat")))
                 {
                     Mod mod = new Mod
                     {
@@ -112,7 +118,7 @@ namespace EldenRingModLauncher
                 }
                 else
                 {
-                    MessageBox.Show("You already have mod with the same mod, rename or find other");
+                    MessageBox.Show("Error! Two possible reasons:\n1. You already have a mod in this program with same name\n2. launchmod_eldenring.bat was not found in folder");
                 }
             }
         }
@@ -128,15 +134,18 @@ namespace EldenRingModLauncher
                 List<Mod> newList = new List<Mod>();
                 foreach (Mod mod in modList)
                 {
+                    // skips the selected mod
                     if (mod.name == selected_mod_name)
                     {
                         //skip
                     }
+                    // adds every unselected mod to new list
                     else
                     {
                         newList.Add(mod);
                     }
                 }
+                // updates the csv and replace the mod list variable
                 modList.Clear();
                 modList = newList;
                 ModifyModCSV();
@@ -146,6 +155,7 @@ namespace EldenRingModLauncher
 
         public void InitializeMods()
         {
+            // setup the panel with buttons from all mods saved in the csv
             ModsPanel.Controls.Clear();
 
             int button_width = 175; // Width of each checkbox
@@ -190,6 +200,7 @@ namespace EldenRingModLauncher
             {
                 selected = false;
 
+                // makes all mods into unselected color
                 foreach (Control control in ModsPanel.Controls)
                 {
                     if (control is Button)
@@ -198,6 +209,7 @@ namespace EldenRingModLauncher
                     }
                 }
 
+                // finds the mod selected and give it selected background color
                 foreach (Mod mod in modList)
                 {
                     if (mod.name == button.Text)
@@ -216,6 +228,7 @@ namespace EldenRingModLauncher
 
         public void ModifyModCSV()
         {
+            // fixes the csv file
             using (StreamWriter sw = new StreamWriter("mod_list.csv"))
             {
                 foreach (Mod mod in modList)
@@ -238,9 +251,9 @@ namespace EldenRingModLauncher
             if (hasCoopMod)
             {
                 Mod coopMod = modList.Find(mod => mod.type == "coop");
-                Console.WriteLine("THE SEAMLESS COOP VALUE: " + coopMod);
+                // Console.WriteLine("THE SEAMLESS COOP VALUE: " + coopMod);
 
-                try
+                try // try to run the ersc_launcher.exe
                 {
                     ProcessStartInfo psi = new ProcessStartInfo(coopMod.bat_file);
                     psi.WorkingDirectory = Path.GetDirectoryName(coopMod.bat_file);
@@ -248,46 +261,45 @@ namespace EldenRingModLauncher
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("The Seamless coop does not exist: " + ex.Message);
+                    MessageBox.Show("The Seamless coop executable is not working\n" + ex.Message);
                 }
             }
             else
             {
+                // opens up a file dialog
                 CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+                // setup
                 dialog.Title = "Select the Elden Ring folder - MUST HAVE SEAMLESS COOP";
                 dialog.InitialDirectory = "C:\\";
                 dialog.IsFolderPicker = true;
+
                 if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
                 {
+                    // gets the folder path
                     string folderPath = dialog.FileName;
                     string folderName = new DirectoryInfo(folderPath).Name;
+                    // if user selects the ELDEN RING folder, change path into Game folder.
                     if (folderName == "ELDEN RING")
                     {
                         folderPath = Path.Combine(folderPath, "Game");
                         folderName = "Game";
                     }
-                    if (folderName == "Game")
+                    // Checks if the executable exists
+                    if (folderName == "Game" && File.Exists(Path.Combine(folderPath, "ersc_launcher.exe")))
                     {
-                        if (!modList.Any(mod => mod.type == "coop"))
+                        Mod mod = new Mod
                         {
-                            Mod mod = new Mod
-                            {
-                                type = "coop",
-                                name = folderName,
-                                bat_file = Path.Combine(folderPath, "ersc_launcher.exe"),
-                            };
-                            modList.Add(mod);
-                            ModifyModCSV();
-                            InitializeMods();
-                        }
-                        else
-                        {
-                            MessageBox.Show("You already have mod with the same mod, rename or find other");
-                        }
+                            type = "coop",
+                            name = folderName,
+                            bat_file = Path.Combine(folderPath, "ersc_launcher.exe"),
+                        };
+                        modList.Add(mod);
+                        ModifyModCSV();
+                        InitializeMods();
                     }
                     else
                     {
-                        MessageBox.Show("You need to select ELDEN RING folder that has Seamless coop executable");
+                        MessageBox.Show("You need to select ELDEN RING folder that has Seamless Coop executable");
                     }
                 }
             }
